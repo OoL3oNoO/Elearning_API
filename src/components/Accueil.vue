@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="accueil">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -43,7 +43,7 @@
 
 <script>
 export default {
-  name: "hello",
+  name: "accueil",
   data() {
     return {
       msg: "Bienvenue sur votre outils de gestion contact"
