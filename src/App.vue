@@ -4,8 +4,10 @@
       <span>Gestion de contact Trecobat</span>
     </header>
     <main>
-      <img src="./assets/TRECOBAT_HEADER.jpg" alt="Logo_Trecobat" />
-      <router-view></router-view>
+      <div class="container">
+        <img class="img-fluid" src="./assets/trecobat_header.jpg" alt="Logo de Trecobat" />
+        <router-view></router-view>
+      </div>
     </main>
   </div>
 </template>
@@ -30,8 +32,8 @@ body {
 
 main {
   text-align: center;
-  margin-top: 40px;
-  overflow: hidden;
+  margin-top: 10px;
+  /* overflow: hidden; */
 }
 
 header {
