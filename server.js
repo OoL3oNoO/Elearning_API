@@ -1,16 +1,17 @@
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host: 'bv47kmafejvofzxhfuc9-mysql.services.clever-cloud.com',
-  database: 'bv47kmafejvofzxhfuc9',
-  user: 'u2g1yn9nujjupsdf',
-  password: 'ioomVSvi0Gaia2izA1Et'
+var mysql = require("mysql");
+//Database connection
+app.use(function (req, res, next) {
+  res.locals.connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: ' ',
+    database: 'test' // host: 'bv47kmafejvofzxhfuc9-mysql.services.clever-cloud.com',
+    // user: 'u2g1yn9nujjupsdf',
+    // password: 'ioomVSvi0Gaia2izA1Et',
+    // database: 'bv47kmafejvofzxhfuc9',
+  });
+  res.locals.connect();
+  next();
 });
-
-connection.connect();
-
-connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-  if (err) throw err;
-  console.log('The solution is: ', rows[0].solution);
-});
-
-connection.end();
+app.use('/', 'index')
+app.use('/api/v1/Contact', contact);
