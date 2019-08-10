@@ -4,6 +4,7 @@
   "description": "A Vue.js project",
   "author": "Damien <dam.haultcoeur@gmail.com>",
   "private": true,
+  "main": "server.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
