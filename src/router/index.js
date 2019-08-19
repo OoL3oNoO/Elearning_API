@@ -1,12 +1,16 @@
 // liste les routes pour les pages et affiche les vues
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueRessource from 'vue-resource'
 import Accueil from '@/components/Accueil'
 import Liste_entreprise from '@/components/entreprises/Liste_entreprise'
 import Contact from '@/components/contacts/Contact'
-import Edition from '@/components/Edition_contact'
+import addContact from '@/components/AddContact'
+import addEntreprise from '@/components/AddEntreprise'
+
 
 Vue.use(Router)
+Vue.use(VueRessource)
 
 export default new Router({
   routes: [{
@@ -15,19 +19,24 @@ export default new Router({
       component: Accueil
     },
     {
-      path: '/liste_entreprise',
+      path: '/listeEntreprise',
       name: 'liste_entreprise',
       component: Liste_entreprise
     },
     {
-      path: '/liste_contact',
+      path: '/listeContact',
       name: 'contact',
       component: Contact
     },
     {
-      path: '/edition',
-      name: 'edition',
-      component: Edition
+      path: '/addContact',
+      name: 'editionContact',
+      component: addContact
+    },
+    {
+      path: '/addEntreprise',
+      name: 'addEntreprise',
+      component: addEntreprise
     }
   ]
 })

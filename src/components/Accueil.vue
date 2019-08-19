@@ -1,43 +1,21 @@
 <template>
   <div class="accueil">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a>
-      </li>
-      <li>
-        <a href="http://chat.vuejs.org/" target="_blank" rel="noopener">Vue Community Chat</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a>
-      </li>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-          rel="noopener"
-        >Docs for This Template</a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a href="http://router.vuejs.org/" target="_blank" rel="noopener">vue-router</a>
-      </li>
-      <li>
-        <a href="http://vuex.vuejs.org/" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
-        <a href="http://vue-loader.vuejs.org/" target="_blank" rel="noopener">vue-loader</a>
-      </li>
-      <li>
-        <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
-      </li>
-    </ul>
+    <a
+      href="http://localhost:8080/#/listEntreprise"
+      class="btn btn-info btn-lg btn-block"
+      role="button"
+    >Liste des entreprises</a>
+    <a
+      href="http://localhost:8080/#/addEntreprise"
+      class="btn btn-primary btn-lg btn-block"
+      role="button"
+    >Créer une entreprise</a>
+    <a
+      href="http://localhost:8080/#/addContact"
+      class="btn btn-secondary btn-lg btn-block"
+      role="button"
+    >Créer un contact</a>
   </div>
 </template>
 
@@ -46,7 +24,7 @@ export default {
   name: "accueil",
   data() {
     return {
-      msg: "Bienvenue sur votre outils de gestion contact"
+      msg: "Bienvenue sur votre outils de gestion de contact"
     };
   }
 };
