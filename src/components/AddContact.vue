@@ -2,7 +2,7 @@
   <div class="container-fluid mt-3">
     <b-card bg-variant="light">
       <h4 class="mb-2">Ajout d'un nouveau contact</h4>
-      <form>
+      <form @submit.prevent>
         <div class="form-row">
           <div class="form-group col-sm-5">
             <b-form-group label-cols-sm="3" label-align-sm="right" id="nom" label="Nom :">
@@ -106,73 +106,63 @@
               ></b-form-input>
             </b-form-group>
           </div>
-          <div class="form-group col-sm-9">
+          <!-- <div class="form-group col-sm-9">
             <b-form-group
               label-cols-sm="3"
               label-align-lg="right"
               id="idcontact"
               label="Entreprise liée :"
             >
-              <b-form-select
-                v-model="entreprises_identreprises"
-                :options="options"
-                size="sm"
-                class="mt-1"
-              ></b-form-select>
-            </b-form-group>
-          </div>
+          <b-form-select v-model="selected" :options="options" size="sm" class="mt-1"></b-form-select>-->
+          <!-- </b-form-group> -->
+           <!-- </div> -->
         </div>
-        <button v-on:click.prevent="postContact" type="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" class="btn btn-primary" @click="postContact()">Valider</button>
       </form>
     </b-card>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "addContact",
   data() {
     return {
-      entreprises_identreprises: null,
-      options: [
-        {
-          value: null,
-          text: "Associez une entreprise si celle-ci est déjà créée"
-        }
-      ],
-      ctsurname: null,
-      ctname: null,
-      ctadress: null,
-      ctzip: null,
-      ctcity: null,
-      ctfunction: null,
-      ctemail: null,
-      ctphone: null
+        ctsurname:"",
+        ctname: "",
+        ctadress: "",
+        ctzip:"",
+        ctcity: "",
+        ctfunction:"",
+        ctemail: "",
+        ctphone: "",
+        
     };
   },
-
   methods: {
-    postContact: async function() {
-      let response = await fetch(
-        `http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io//api/v1/contacts`,
-        {
-          body: JSON.stringify({
-            ctsurname: this.ctsurname,
-            ctname: this.ctname,
-            ctadress: this.ctadress,
-            ctzip: this.ctzip,
-            ctcity: this.ctcity,
-            ctfunction: this.ctfunction,
-            ctemail: this.ctemail,
-            ctphone: this.ctphone,
-            entreprises_identreprises: this.entreprises_identreprises
-          }),
-          method: "POST",
-          headers: this.headers
-        }
-      );
-      this.$router.push({ name: "Liste_entreprise" });
+    postContact(){
+      let currentObj = this;
+
+      axios.post('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts',{
+        ctsurname:  this.ctsurname,
+        ctname:     this.ctname,
+        ctadress:   this.ctadress,
+        ctzip:      this.ctzip,
+        ctcity:     this.ctcity,
+        ctfunction: this.ctfunction,
+        ctemail:    this.ctemail,
+        ctphone:    this.ctphone
+      }).then(function (response){
+        alert('Contact ajouté !');
+        currentObj.$router.push('/listeContact');
+      }).catch(function(error){
+        alert(error);
+      });
     }
   }
-};
+}
+
+
 </script>

@@ -3,9 +3,19 @@
     <header>
       <span>
         Gestion de contact Trecobat
-        <a
+        <a v-if="this.$route.path != '/addEntreprise' && this.$route.path != '/'"
+          href="http://localhost:8080/#/addEntreprise"
+          class="btn btn-outline-light"
+          role="button"
+        > Ajouter une entreprise</a>
+        <a v-if="this.$route.path != '/addContact'&&this.$route.path != '/'"
+          href="http://localhost:8080/#/addContact"
+          class="btn btn-outline-light"
+          role="button"
+        > Ajouter un contact</a>
+        <a v-if="this.$route.path != '/'"
           href="http://localhost:8080/#/"
-          class="btn btn-outline-primary"
+          class="btn btn-outline-light"
           role="button"
         >Accueil</a>
       </span>
@@ -47,10 +57,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-.btn-outline-primary {
+.btn-outline-light {
   float: right;
   padding-bottom: 1px;
+  margin-right: 10px;
 }
+
 main {
   text-align: center;
   margin-top: 10px;

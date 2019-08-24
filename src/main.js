@@ -11,14 +11,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(VueRessource)
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
-window.rootURL =
-  'http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io//api/v1/';
+// window.rootURL =
+//   'http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io//api/v1/';
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
-  template: '<App/>',
-  components: {
-    App
-  }
-})
+  render: h => h(App),
+}).$mount('#app');

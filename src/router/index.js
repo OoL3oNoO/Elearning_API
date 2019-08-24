@@ -7,12 +7,20 @@ import Liste_entreprise from '@/components/entreprises/Liste_entreprise'
 import Contact from '@/components/contacts/Contact'
 import addContact from '@/components/AddContact'
 import addEntreprise from '@/components/AddEntreprise'
-
+import entreprise from '@/components/entreprises/Entreprise'
+import DataTableEntreprise from '@/components/DataTableEntreprise.vue'
+import DataTableContact from '@/components/DataTableContact.vue'
 
 Vue.use(Router)
 Vue.use(VueRessource)
 
 export default new Router({
+      name:'Table',
+      components: {
+        DataTableEntreprise,
+        DataTableContact
+      },
+
   routes: [{
       path: '/',
       name: 'Accueil',
@@ -37,6 +45,12 @@ export default new Router({
       path: '/addEntreprise',
       name: 'addEntreprise',
       component: addEntreprise
+    },
+    {
+      path: '/entreprise',
+      name: 'Entreprise',
+      component: entreprise
     }
+   
   ]
 })
