@@ -5,10 +5,10 @@
       <input type="text" class="form-control" v-model="search" placeholder="Ici vous pouvez rechercher une entreprise par nom, code postal, ville, numéro de téléphone, email, siret, ou statut">
     </div>
     <div class="table-responsive">
-      <table class="table table-striped table-bordered" style="width:100%">
+      <table class="table table-striped table-bordered " style="width:100% ">
           <thead width="40rem">
               <tr>
-                  <th scope="col">Suppression, Edition,<br>détails</th>
+                  <th scope="col">Suppression,<br>détails</th>
                   <th scope="col">#</th>
                   <th scope="col" >Nom</th>
                   <th scope="col">Adresse</th>
@@ -24,14 +24,14 @@
           <tbody>
         
               <tr v-for="(entreprise) in (filteredList)" :key="entreprise.identreprises">
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="deleteEntreprise(entreprise.identreprises)">🗑</button>
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="(index)">🖍</button>
-                <a type="button" href="http://localhost:8080/#/entreprise/{id}" class="btn btn-danger pull-right" data-toggle="modal" @click="(index)">🔎</a>
-                <td>{{entreprise.identreprises }}</td>
+                <button type="button" class="btn btn-danger pull-right" @click="deleteEntreprise(entreprise.identreprises)">🗑</button>
+                <!-- <button type="button" class="btn btn-danger pull-right" @click="(index)">🖍</button> -->
+                <button type="button" class="btn btn-danger pull-right"  @click="$router.push({name: 'Entreprise' ,params: {id: `${entreprise.identreprises}`}})">🔎</button> 
+                <td>{{entreprise.identreprises}}</td>
                 <td>{{entreprise.entname}}</td>
                 <td>{{entreprise.entadress}}</td>
                 <td>{{entreprise.entzip}}</td>
-                <td>{{entreprise.entcity}}</td>
+                 <td>{{entreprise.entcity}}</td>
                 <td>{{entreprise.entphone}}</td>
                 <td>{{entreprise.entmail}}</td>
                 <td>{{entreprise.entsiret}}</td>
@@ -57,6 +57,7 @@ export default {
     searchSelection: '',
     pageSize: 100,
     currentPage: 1,
+    
   }),
   methods:{
 

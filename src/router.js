@@ -4,10 +4,13 @@ import Router from 'vue-router'
 import VueRessource from 'vue-resource'
 import Accueil from '@/components/Accueil'
 import Liste_entreprise from '@/components/entreprises/Liste_entreprise'
+import Contacts from '@/components/contacts/Contacts'
 import Contact from '@/components/contacts/Contact'
+import updateContact from '@/components/contacts/UpdateContact'
 import addContact from '@/components/AddContact'
 import addEntreprise from '@/components/AddEntreprise'
 import entreprise from '@/components/entreprises/Entreprise'
+import updateEntreprise from '@/components/entreprises/UpdateEntreprise'
 import DataTableEntreprise from '@/components/DataTableEntreprise.vue'
 import DataTableContact from '@/components/DataTableContact.vue'
 
@@ -32,9 +35,9 @@ export default new Router({
       component: Liste_entreprise
     },
     {
-      path: '/listeContact',
-      name: 'contact',
-      component: Contact
+      path: '/listeContacts',
+      name: 'contacts',
+      component: Contacts
     },
     {
       path: '/addContact',
@@ -47,10 +50,28 @@ export default new Router({
       component: addEntreprise
     },
     {
-      path: '/entreprise',
+      path: '/entreprise/:id',
       name: 'Entreprise',
-      component: entreprise
-    }
-   
+      component: entreprise,
+      props : true    
+    },
+    {
+      path: '/Contact/:id',
+      name: 'contact',
+      component: Contact,
+      props : true 
+    },
+    {
+      path: '/updateEntreprise/:id',
+      name: 'UpdateEntreprise',
+      component: updateEntreprise,
+      props : true
+    },
+    {
+      path: '/updateContact/:id',
+      name: 'UpdateContact',
+      component: updateContact,
+      props : true
+    },
   ]
 })

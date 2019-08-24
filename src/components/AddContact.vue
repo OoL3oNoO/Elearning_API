@@ -156,7 +156,7 @@ export default {
         ctphone:    this.ctphone
       }).then(function (response){
         alert('Contact ajouté !');
-        currentObj.$router.push('/listeContact');
+        currentObj.$router.push('/listeContacts');
       }).catch(function(error){
         alert(error);
       });

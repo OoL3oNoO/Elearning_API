@@ -7,7 +7,7 @@
       role="button"
     >Liste des entreprises</a>
     <a
-      href="http://localhost:8080/#/listeContact"
+      href="http://localhost:8080/#/listeContacts"
       class="btn btn-success btn-lg btn-block"
       role="button"
     >Liste des contacts</a>

@@ -24,8 +24,8 @@
           <tbody>
               <tr v-for="(contact) in (filteredList)" :key="contact.id_contact">
                 <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="deleteContact(contact.id_contact)">🗑</button>
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="(index)">🖍</button>
-                <a type="button" href="http://localhost:8080/#/entreprise/{id}" class="btn btn-danger pull-right" data-toggle="modal" @click="(index)">🔎</a>
+                <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="(index)">🖍</button> -->
+               <button type="button" class="btn btn-danger pull-right"  @click="$router.push({name: 'contact' ,params: {id: `${contact.id_contact}`}})">🔎</button> 
                 <td>{{contact.id_contact}}</td>
                 <td>{{contact.ctsurname}}</td>
                 <td>{{contact.ctname}}</td>
