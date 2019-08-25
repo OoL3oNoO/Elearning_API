@@ -8,7 +8,7 @@
       <table class="table table-striped table-bordered " style="width:100% ">
           <thead width="40rem">
               <tr>
-                  <th scope="col">Suppression,<br>détails</th>
+                  <th scope="col">Suppression,<br>modification, détail</th>
                   <th scope="col">#</th>
                   <th scope="col" >Nom</th>
                   <th scope="col">Adresse</th>
@@ -25,7 +25,7 @@
         
               <tr v-for="(entreprise) in (filteredList)" :key="entreprise.identreprises">
                 <button type="button" class="btn btn-danger pull-right" @click="deleteEntreprise(entreprise.identreprises)">🗑</button>
-                <!-- <button type="button" class="btn btn-danger pull-right" @click="(index)">🖍</button> -->
+                                <button type="button" class="btn btn-danger pull-right" @click="$router.push({name: 'UpdateEntreprise' ,params: {id: `${entreprise.identreprises}`}})">🖍</button>
                 <button type="button" class="btn btn-danger pull-right"  @click="$router.push({name: 'Entreprise' ,params: {id: `${entreprise.identreprises}`}})">🔎</button> 
                 <td>{{entreprise.identreprises}}</td>
                 <td>{{entreprise.entname}}</td>

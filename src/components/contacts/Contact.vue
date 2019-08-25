@@ -4,7 +4,7 @@
       <table class="table table-striped table-bordered" style="width:100%">
           <thead width="40rem">
               <tr>
-                  <th scope="col">Suppression, Edition</th>
+                  <th scope="col">Suppression,<br> modification</th>
                   <th scope="col">#</th>
                   <th scope="col" >Nom</th>
                   <th scope="col" >Prénom</th>
@@ -20,7 +20,7 @@
           <tbody>
               <tr v-for="(contact) in (contacts)" :key="contact.id_contact">
                 <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="deleteContact(contact.id_contact)">🗑</button>
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="(index)">🖍</button>
+                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="$router.push({name: 'UpdateContact' ,params: {id: `${contact.id_contact}`}})">🖍</button>
                 <td>{{contact.id_contact}}</td>
                 <td>{{contact.ctsurname}}</td>
                 <td>{{contact.ctname}}</td>
@@ -53,15 +53,16 @@
     }),
     methods :{
         getContact: function() {
-        axios.get('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts').then((response) => {
-        this.contacts = response.data;
-      });
-  },
+          axios.get('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts').then((response) => {
+            this.contacts = response.data;
+          });
+        },
 
         getOneContact: function() {
-        axios.get(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`).then((response) => {
-        this.contacts = response.data;});  
-      },
+          axios.get(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`).then((response) => {
+            this.contacts = response.data;
+          });  
+        },
 
         deleteContact: function(id) { 
         let currentObj = this;

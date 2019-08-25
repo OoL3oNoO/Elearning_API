@@ -20,21 +20,7 @@ export default {
  
 
   methods: {
-    //   created() {
-    // },
 
-    // //Update une entreprise
-    // updateArtist: async function (id) {
-    //   let response = await fetch(
-    //     `http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises${this.id}`,
-    //     {
-    //       headers: this.headers,
-    //       method: "POST",
-    //       body: JSON.stringify({ name: this.updateEntrepriseData.name })
-    //     }
-    //   );
-    //   this.updateEntrepriseData.result = await response.json();
-    // }
   }
 }
 </script>

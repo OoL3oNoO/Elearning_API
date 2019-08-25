@@ -4,7 +4,7 @@
       <table class="table table-striped table-bordered" style="width:100%">
           <thead width="40rem">
               <tr>
-                  <th scope="col">Suppression, Edition</th>
+                  <th scope="col">Suppression, modification</th>
                   <th scope="col">#</th>
                   <th scope="col" >Nom</th>
                   <th scope="col">Adresse</th>
@@ -46,7 +46,7 @@
     name: "entreprise",
     props: {
     id: String,
-    name: String
+  
     },
     data: ()=>({
         entreprises:[],

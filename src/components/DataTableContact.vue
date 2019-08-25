@@ -8,7 +8,7 @@
       <table class="table table-striped table-bordered" style="width:100%">
           <thead width="40rem">
               <tr>
-                  <th scope="col">Suppression, Edition,<br>détails</th>
+                  <th scope="col">Suppression,<br> modification, détail</th>
                   <th scope="col">#</th>
                   <th scope="col" >Nom</th>
                   <th scope="col" >Prénom</th>
@@ -24,7 +24,7 @@
           <tbody>
               <tr v-for="(contact) in (filteredList)" :key="contact.id_contact">
                 <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="deleteContact(contact.id_contact)">🗑</button>
-                <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="(index)">🖍</button> -->
+                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="$router.push({name: 'UpdateContact' ,params: {id: `${contact.id_contact}`}})">🖍</button>
                <button type="button" class="btn btn-danger pull-right"  @click="$router.push({name: 'contact' ,params: {id: `${contact.id_contact}`}})">🔎</button> 
                 <td>{{contact.id_contact}}</td>
                 <td>{{contact.ctsurname}}</td>
