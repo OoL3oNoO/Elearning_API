@@ -128,7 +128,7 @@ export default {
     postEntreprise(){
       let currentObj = this;
 
-      axios.post('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises',{
+      axios.post('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises',{
         entname: this.entname,
         entadress: this.entadress,
         entzip: this.entzip,

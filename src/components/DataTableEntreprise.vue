@@ -24,9 +24,9 @@
           <tbody>
         
               <tr v-for="(entreprise) in (filteredList)" :key="entreprise.identreprises">
-                <button type="button" class="btn btn-danger pull-right" @click="deleteEntreprise(entreprise.identreprises)">🗑</button>
-                                <button type="button" class="btn btn-danger pull-right" @click="$router.push({name: 'UpdateEntreprise' ,params: {id: `${entreprise.identreprises}`}})">🖍</button>
-                <button type="button" class="btn btn-danger pull-right"  @click="$router.push({name: 'Entreprise' ,params: {id: `${entreprise.identreprises}`}})">🔎</button> 
+                <button type="button" class="btn btn-light pull-right" @click="deleteEntreprise(entreprise.identreprises)">🗑</button>
+                                <button type="button" class="btn btn-light pull-right" @click="$router.push({name: 'UpdateEntreprise' ,params: {id: `${entreprise.identreprises}`}})">🖍</button>
+                <button type="button" class="btn btn-light pull-right"  @click="$router.push({name: 'Entreprise' ,params: {id: `${entreprise.identreprises}`}})">🔎</button> 
                 <td>{{entreprise.identreprises}}</td>
                 <td>{{entreprise.entname}}</td>
                 <td>{{entreprise.entadress}}</td>
@@ -41,8 +41,6 @@
           </tbody>
       </table>
     </div>
- <!-- <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="fas fa-arrow-left"></i> Previous</button> 
- <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Next <i class="fas fa-arrow-right"></i></button> -->
   </div>
 </template>
 
@@ -62,12 +60,12 @@ export default {
   methods:{
 
   getEntreprise: function() {
-        axios.get('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises').then((response) => {
+        axios.get('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises').then((response) => {
         this.entreprises = response.data;
       });
   },
       deleteEntreprise: function(id) { 
-      axios.delete(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${id}`).then((response)=> 
+      axios.delete(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${id}`).then((response)=> 
       this.getEntreprise());
     },
   },
@@ -98,11 +96,11 @@ export default {
 </script>
 
 <style>
-.btn-danger{
+.btn-light{
 margin-top: 0.25rem;
- background:rgb(247, 247, 247);
+ /* background:rgb(247, 247, 247);
  border-color:#ffffff;
-  color: #fff;
+  color: #fff; */
   font-size: 14px;
   border-radius: 0.5em;
   padding: 0 1em;
@@ -110,7 +108,7 @@ margin-top: 0.25rem;
   overflow: hidden;
   line-height: 32px;
    }
-.btn-danger:after{
+.btn-light:after{
    content: '';
   position: absolute;
   top: -50%;
@@ -120,7 +118,7 @@ margin-top: 0.25rem;
   background: linear-gradient(to bottom, rgba(229, 172, 142, 0), rgba(255,255,255,0.5) 50%, rgba(229, 172, 142, 0));
   transform: rotateZ(60deg) translate(-5em, 7.5em);
    }
-   .btn-danger:hover::after, .btn-danger:focus::after {
+   .btn-light:hover::after, .btn-light:focus::after {
   animation: sheen 1s forwards;
 }
 @keyframes sheen {

@@ -23,9 +23,9 @@
           </thead>
           <tbody>
               <tr v-for="(contact) in (filteredList)" :key="contact.id_contact">
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="deleteContact(contact.id_contact)">🗑</button>
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="$router.push({name: 'UpdateContact' ,params: {id: `${contact.id_contact}`}})">🖍</button>
-               <button type="button" class="btn btn-danger pull-right"  @click="$router.push({name: 'contact' ,params: {id: `${contact.id_contact}`}})">🔎</button> 
+                <button type="button" class="btn btn-light pull-right" data-toggle="modal" @click="deleteContact(contact.id_contact)">🗑</button>
+                <button type="button" class="btn btn-light pull-right" data-toggle="modal" @click="$router.push({name: 'UpdateContact' ,params: {id: `${contact.id_contact}`}})">🖍</button>
+               <button type="button" class="btn btn-light pull-right"  @click="$router.push({name: 'contact' ,params: {id: `${contact.id_contact}`}})">🔎</button> 
                 <td>{{contact.id_contact}}</td>
                 <td>{{contact.ctsurname}}</td>
                 <td>{{contact.ctname}}</td>
@@ -58,12 +58,12 @@ export default {
   }),
   methods:{
      getContact: function() {
-        axios.get('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts').then((response) => {
+        axios.get('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts').then((response) => {
         this.contacts = response.data;
       });
   },
       deleteContact: function(id) { 
-      axios.delete(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${id}`).then((response)=> 
+      axios.delete(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${id}`).then((response)=> 
       this.getContact());
     },
   },
@@ -93,12 +93,12 @@ export default {
 }
 </script>
 
-<style cop>
+<style scoped>
 .btn-danger{
 margin-top: 0.25rem;
- background:rgb(247, 247, 247);
- border-color:#ffffff;
-  color: #fff;
+ /* background:rgb(247, 247, 247);
+ border-color:#ffffff; */
+  /* color: #fff; */
   font-size: 14px;
   border-radius: 0.5em;
   padding: 0 1em;

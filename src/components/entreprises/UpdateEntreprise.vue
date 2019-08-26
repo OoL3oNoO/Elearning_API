@@ -119,14 +119,14 @@ export default {
   methods: {
 
     getOneEntreprise: function() {
-        axios.get(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${this.id}`).then((response) => {
+        axios.get(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${this.id}`).then((response) => {
         this.entreprises = response.data[0];});
         },
 
     postEntreprise(){
             let currentObj = this;
 
-      axios.put(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${this.id}`,{
+      axios.put(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${this.id}`,{
         entname: this.entreprises.entname,
         entadress: this.entreprises.entadress,
         entzip: this.entreprises.entzip,

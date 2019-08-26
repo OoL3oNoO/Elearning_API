@@ -55,17 +55,17 @@
     methods :{
 
         getEntreprise: function() {
-        axios.get('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises').then((response) => {
+        axios.get('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises').then((response) => {
         this.entreprises = response.data;
       });
   },
         getOneEntreprise: function() {
-        axios.get(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${this.id}`).then((response) => {
+        axios.get(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${this.id}`).then((response) => {
         this.entreprises = response.data;});
       },
        deleteEntreprise: function(id) { 
           let currentObj = this;
-        axios.delete(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${id}`).then((response)=> 
+        axios.delete(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises/${id}`).then((response)=> 
         currentObj.$router.push('/listeEntreprise'));
       },
     },

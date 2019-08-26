@@ -151,14 +151,14 @@ export default {
   methods: {
 
     getOneContact: function() {
-        axios.get(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`).then((response) => {
+        axios.get(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`).then((response) => {
         this.contacts = response.data[0];});
         },
 
     postContact(){
             let currentObj = this;
 
-      axios.put(`http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`,{
+      axios.put(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`,{
         ctsurname: this.contacts.ctsurname,
         ctname: this.contacts.ctname,
         ctadress: this.contacts.ctadress,

@@ -145,7 +145,7 @@ export default {
     postContact(){
       let currentObj = this;
 
-      axios.post('http://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts',{
+      axios.post('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts',{
         ctsurname:  this.ctsurname,
         ctname:     this.ctname,
         ctadress:   this.ctadress,

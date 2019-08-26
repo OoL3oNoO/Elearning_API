@@ -1,26 +1,23 @@
 <template>
   <div class="accueil">
     <h1>{{ msg }}</h1>
-    <a
-      href="http://localhost:8080/#/listeEntreprise"
+    <button
       class="btn btn-info btn-lg btn-block"
-      role="button"
-    >Liste des entreprises</a>
-    <a
-      href="http://localhost:8080/#/listeContacts"
+      role="button" @click="$router.push({name: 'liste_entreprise'})"
+    >Liste des entreprises</button>
+    <button
       class="btn btn-success btn-lg btn-block"
-      role="button"
-    >Liste des contacts</a>
-    <a
-      href="http://localhost:8080/#/addEntreprise"
+      role="button" @click="$router.push({name: 'contacts'})"
+    >Liste des contacts</button>
+    <button
       class="btn btn-primary btn-lg btn-block"
-      role="button"
-    >Créer une entreprise</a>
-    <a
-      href="http://localhost:8080/#/addContact"
+      role="button" @click="$router.push({name: 'addEntreprise'})"
+    >Créer une entreprise</button>
+    <button
+      
       class="btn btn-secondary btn-lg btn-block"
-      role="button"
-    >Créer un contact</a>
+      role="button" @click="$router.push({name: 'editionContact'})"
+    >Créer un contact</button>
   </div>
 </template>
 
