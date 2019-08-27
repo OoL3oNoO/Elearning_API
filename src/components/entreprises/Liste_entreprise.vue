@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import DataTableEntreprise from "../DataTableEntreprise";
+import DataTableEntreprise from "../entreprises/DataTableEntreprise";
 export default {
   name: "Liste_entreprise",
   components :{ DataTableEntreprise },

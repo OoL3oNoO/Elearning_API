@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import DataTableContact from "../DataTableContact";
+import DataTableContact from "../contacts/DataTableContact";
 export default {
   name: "Contacts",
   components:{DataTableContact},

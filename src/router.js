@@ -7,12 +7,12 @@ import Liste_entreprise from '@/components/entreprises/Liste_entreprise'
 import Contacts from '@/components/contacts/Contacts'
 import Contact from '@/components/contacts/Contact'
 import updateContact from '@/components/contacts/UpdateContact'
-import addContact from '@/components/AddContact'
-import addEntreprise from '@/components/AddEntreprise'
+import addContact from '@/components/contacts/AddContact'
+import addEntreprise from '@/components/entreprises/AddEntreprise'
 import entreprise from '@/components/entreprises/Entreprise'
 import updateEntreprise from '@/components/entreprises/UpdateEntreprise'
-import DataTableEntreprise from '@/components/DataTableEntreprise.vue'
-import DataTableContact from '@/components/DataTableContact.vue'
+import DataTableEntreprise from '@/components/entreprises/DataTableEntreprise.vue'
+import DataTableContact from '@/components/contacts/DataTableContact.vue'
 
 Vue.use(Router)
 Vue.use(VueRessource)
