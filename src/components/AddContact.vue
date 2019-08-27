@@ -81,7 +81,7 @@
               label-cols-sm="3"
               label-align-sm="right"
               id="function"
-              label="Poste occupé :"
+              label="Fonction :"
             >
               <b-form-input
                 id="function"

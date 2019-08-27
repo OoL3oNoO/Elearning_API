@@ -29,7 +29,7 @@
     <footer>
       <div class="container">
         <p>
-          &#9830; 2019 Haultcoeur Damien || Outils de gestion de contact
+          &#9830; 2019 Haultcoeur Damien || Outil de gestion de contact
           <a
             href="https://www.trecobat.fr/"
             style="color:#c7dae1;"

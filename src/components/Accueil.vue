@@ -26,7 +26,7 @@ export default {
   name: "accueil",
   data() {
     return {
-      msg: "Bienvenue sur votre outils de gestion de contact"
+      msg: "Bienvenue sur votre outil de gestion de contact"
     };
   }
 };
