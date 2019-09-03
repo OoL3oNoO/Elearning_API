@@ -36,8 +36,6 @@
           </tbody>
       </table>
     </div>
- <!-- <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="fas fa-arrow-left"></i> Previous</button> 
- <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Next <i class="fas fa-arrow-right"></i></button> -->
   </div>
 </template>
 <script>

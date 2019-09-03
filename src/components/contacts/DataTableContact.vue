@@ -40,8 +40,6 @@
           </tbody>
       </table>
     </div>
- <!-- <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="fas fa-arrow-left"></i> Previous</button> 
- <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Next <i class="fas fa-arrow-right"></i></button> -->
   </div>
 </template>
 
@@ -96,9 +94,9 @@ export default {
 <style scoped>
 .btn-danger{
 margin-top: 0.25rem;
- /* background:rgb(247, 247, 247);
- border-color:#ffffff; */
-  /* color: #fff; */
+ background:rgb(247, 247, 247);
+ border-color:#ffffff;
+  color: #fff;
   font-size: 14px;
   border-radius: 0.5em;
   padding: 0 1em;

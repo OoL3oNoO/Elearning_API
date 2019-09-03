@@ -106,16 +106,21 @@
               ></b-form-input>
             </b-form-group>
           </div>
-          <!-- <div class="form-group col-sm-9">
+         <div class="form-group col-sm-9">
             <b-form-group
               label-cols-sm="3"
               label-align-lg="right"
               id="idcontact"
               label="Entreprise liée :"
             >
-          <b-form-select v-model="selected" :options="options" size="sm" class="mt-1"></b-form-select>-->
-          <!-- </b-form-group> -->
-           <!-- </div> -->
+          <b-form-select v-model="entreprises_identreprises">
+            <option v-for="(entreprise, index) in (entreprises)" :value="entreprise.identreprises" :key="index" size="sm" class="mt-1">
+              {{entreprise.entname}}
+            </option>
+          </b-form-select>
+          <span>Selectionné: {{entreprises_identreprises}}</span>
+          </b-form-group>
+         </div>
         </div>
         <button type="submit" class="btn btn-primary" @click="postContact()">Valider</button>
       </form>
@@ -128,8 +133,15 @@ import axios from "axios";
 
 export default {
   name: "addContact",
+  props: {
+    id: String,
+    },
   data() {
     return {
+      entreprises: [],
+         /* entreprises: [{text:'test',value:"xyz"}], */
+
+
         ctsurname:"",
         ctname: "",
         ctadress: "",
@@ -138,10 +150,13 @@ export default {
         ctfunction:"",
         ctemail: "",
         ctphone: "",
+        entreprises_identreprises:""
         
     };
   },
+
   methods: {
+    
     postContact(){
       let currentObj = this;
 
@@ -153,15 +168,24 @@ export default {
         ctcity:     this.ctcity,
         ctfunction: this.ctfunction,
         ctemail:    this.ctemail,
-        ctphone:    this.ctphone
+        ctphone:    this.ctphone,
+        entreprises_identreprises: this.entreprises_identreprises,
       }).then(function (response){
         alert('Contact ajouté !');
         currentObj.$router.push('/listeContacts');
       }).catch(function(error){
         alert(error);
       });
-    }
-  }
+    },
+      getEntreprise: function() {
+        axios.get('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises').then((response) => {
+        this.entreprises = response.data;
+      });
+  },
+  },
+     created () {
+   this.getEntreprise();
+  },
 }
 
 

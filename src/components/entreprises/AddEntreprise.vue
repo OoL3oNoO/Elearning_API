@@ -139,7 +139,7 @@ export default {
         entstatut: this.entstatut,
         // contacts_id_contact: this.contacts_id_contact
       }).then(function (response){
-        alert('Entreprise ajouté !');
+        alert('Entreprise ajoutée !');
         currentObj.$router.push('/listeEntreprise');
       }).catch(function(error){
         alert(error);

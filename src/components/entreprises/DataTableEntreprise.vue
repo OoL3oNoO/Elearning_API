@@ -36,7 +36,7 @@
                 <td>{{entreprise.entmail}}</td>
                 <td>{{entreprise.entsiret}}</td>
                 <td>{{entreprise.entstatut}}</td>
-                <td>{{entreprise.contacts_id_contact}}</td>
+                
               </tr>
           </tbody>
       </table>
