@@ -77,12 +77,7 @@
           </div>
 
           <div class="form-group col-sm-5">
-            <b-form-group
-              label-cols-sm="3"
-              label-align-sm="right"
-              id="function"
-              label="Fonction :"
-            >
+            <b-form-group label-cols-sm="3" label-align-sm="right" id="function" label="Fonction :">
               <b-form-input
                 id="function"
                 class="form-control"
@@ -106,25 +101,36 @@
               ></b-form-input>
             </b-form-group>
           </div>
-         <div class="form-group col-sm-9">
+          <div class="form-group col-sm-9">
             <b-form-group
               label-cols-sm="3"
               label-align-lg="right"
               id="idcontact"
+              required
               label="Entreprise liée :"
             >
-          <b-form-select v-model="entreprises_identreprises">
-            <option v-for="(entreprise, index) in (entreprises)" :value="entreprise.identreprises" :key="index" size="sm" class="mt-1">
-              {{entreprise.entname}}
-            </option>
-          </b-form-select>
-          <span>Selectionné: {{entreprises_identreprises}}</span>
-          </b-form-group>
-         </div>
+              <b-form-select v-model="entreprises_identreprises">
+                <option
+                  v-for="(entreprise, index) in (entreprises)"
+                  :value="entreprise.identreprises"
+                  :key="index"
+                  size="sm"
+                  class="mt-1"
+                >{{entreprise.entname}}</option>
+              </b-form-select>
+              <span>Selectionné: {{entreprises_identreprises}}</span>
+            </b-form-group>
+          </div>
         </div>
         <button type="submit" class="btn btn-primary" @click="postContact()">Valider</button>
       </form>
     </b-card>
+    <p v-if="errors.length">
+      <b class="mt-5" style="color :red">Veuillez corriger les erreurs suivantes :</b>
+    </p>
+    <ul>
+      <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+    </ul>
   </div>
 </template>
 
@@ -134,59 +140,96 @@ import axios from "axios";
 export default {
   name: "addContact",
   props: {
-    id: String,
-    },
+    id: String
+  },
   data() {
     return {
       entreprises: [],
-         /* entreprises: [{text:'test',value:"xyz"}], */
-
-
-        ctsurname:"",
-        ctname: "",
-        ctadress: "",
-        ctzip:"",
-        ctcity: "",
-        ctfunction:"",
-        ctemail: "",
-        ctphone: "",
-        entreprises_identreprises:""
-        
+      errors: [],
+      ctsurname: "",
+      ctname: "",
+      ctadress: "",
+      ctzip: "",
+      ctcity: "",
+      ctfunction: "",
+      ctemail: "",
+      ctphone: "",
+      entreprises_identreprises: ""
     };
   },
 
   methods: {
-    
-    postContact(){
+    checkForm: function() {
+      this.errors = [];
+      if (!this.ctsurname) {
+        this.errors.push("Nom requis");
+      }
+      if (!this.ctname) {
+        this.errors.push("Prénom requis");
+      }
+      if (!this.ctadress) {
+        this.errors.push("Adresse requise");
+      }
+      if (!this.ctzip) {
+        this.errors.push("Code Postal requis");
+      }
+      if (!this.ctcity) {
+        this.errors.push("Ville requise");
+      }
+      if (!this.ctemail) {
+        this.errors.push("Email requis");
+      }
+      if (!this.ctfunction) {
+        this.errors.push("Fonction requise");
+      }
+      if (!this.ctphone) {
+        this.errors.push("N° de téléphone requis");
+      }
+      if (!this.entreprises_identreprises) {
+        this.errors.push("Veuillez choisir l'entreprise affiliée à ce contact");
+      }
+      if (!this.errors.length) {
+        this.postContact();
+      }
+    },
+    postContact() {
       let currentObj = this;
 
-      axios.post('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts',{
-        ctsurname:  this.ctsurname,
-        ctname:     this.ctname,
-        ctadress:   this.ctadress,
-        ctzip:      this.ctzip,
-        ctcity:     this.ctcity,
-        ctfunction: this.ctfunction,
-        ctemail:    this.ctemail,
-        ctphone:    this.ctphone,
-        entreprises_identreprises: this.entreprises_identreprises,
-      }).then(function (response){
-        alert('Contact ajouté !');
-        currentObj.$router.push('/listeContacts');
-      }).catch(function(error){
-        alert(error);
-      });
+      axios
+        .post(
+          "https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts",
+          {
+            ctsurname: this.ctsurname,
+            ctname: this.ctname,
+            ctadress: this.ctadress,
+            ctzip: this.ctzip,
+            ctcity: this.ctcity,
+            ctfunction: this.ctfunction,
+            ctemail: this.ctemail,
+            ctphone: this.ctphone,
+            entreprises_identreprises: this.entreprises_identreprises
+          }
+        )
+        .then(function(response) {
+          alert("Contact ajouté !");
+          currentObj.$router.push("/listeContacts");
+        })
+        .catch(function(error) {
+          alert(error);
+        });
     },
-      getEntreprise: function() {
-        axios.get('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises').then((response) => {
-        this.entreprises = response.data;
-      });
+    getEntreprise: function() {
+      axios
+        .get(
+          "https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises"
+        )
+        .then(response => {
+          this.entreprises = response.data;
+        });
+    }
   },
-  },
-     created () {
-   this.getEntreprise();
-  },
-}
-
-
+  created() {
+    this.getEntreprise();
+  }
+};
 </script>

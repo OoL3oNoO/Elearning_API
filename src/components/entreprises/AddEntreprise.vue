@@ -1,6 +1,5 @@
 <template>
   <div class="container-fluid mt-3">
-    
     <b-card bg-variant="light">
       <h4 class="mb-2">Création d'une nouvelle entreprise</h4>
       <form @submit.prevent>
@@ -83,16 +82,6 @@
               ></b-form-input>
             </b-form-group>
           </div>
-          <!-- <div class="form-group col-sm-9">
-            <b-form-group label-cols-sm="3" label-align-lg="right" id="idcontact" label="Contact :">
-              <b-form-select
-                v-model="contacts_id_contact"
-                :options="options"
-                size="sm"
-                class="mt-1"
-              ></b-form-select>
-            </b-form-group>
-          </div> -->
         </div>
 
         <button type="submit" @click="postEntreprise()" class="btn btn-primary">Valider</button>
@@ -107,45 +96,43 @@ export default {
   name: "addEntreprise",
   data() {
     return {
-      // contacts_id_contact: null,
-      // options: [
-      //   { value: null, text: "Associez un contact si celui-ci est déjà crée" }
-      // ],
-      
-        entname: "",
-        entadress: "",
-        entzip: "",
-        entcity: "",
-        entphone: "",
-        entmail: "",
-        entsiret: "",
-        entstatut: "",
-        // contacts_id_contact:""
+      entname: "",
+      entadress: "",
+      entzip: "",
+      entcity: "",
+      entphone: "",
+      entmail: "",
+      entsiret: "",
+      entstatut: ""
     };
   },
 
   methods: {
-    postEntreprise(){
+    postEntreprise() {
       let currentObj = this;
 
-      axios.post('https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises',{
-        entname: this.entname,
-        entadress: this.entadress,
-        entzip: this.entzip,
-        entcity: this.entcity,
-        entphone: this.entphone,
-        entmail: this.entmail,
-        entsiret: this.entsiret,
-        entstatut: this.entstatut,
-        // contacts_id_contact: this.contacts_id_contact
-      }).then(function (response){
-        alert('Entreprise ajoutée !');
-        currentObj.$router.push('/listeEntreprise');
-      }).catch(function(error){
-        alert(error);
-      });
+      axios
+        .post(
+          "https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises",
+          {
+            entname: this.entname,
+            entadress: this.entadress,
+            entzip: this.entzip,
+            entcity: this.entcity,
+            entphone: this.entphone,
+            entmail: this.entmail,
+            entsiret: this.entsiret,
+            entstatut: this.entstatut
+          }
+        )
+        .then(function(response) {
+          alert("Entreprise ajoutée !");
+          currentObj.$router.push("/listeEntreprise");
+        })
+        .catch(function(error) {
+          alert(error);
+        });
     }
-    
   }
 };
 </script>

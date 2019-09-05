@@ -106,20 +106,35 @@
               ></b-form-input>
             </b-form-group>
           </div>
-          <!-- <div class="form-group col-sm-9">
+          <div class="form-group col-sm-9">
             <b-form-group
               label-cols-sm="3"
               label-align-lg="right"
               id="idcontact"
-              label="Contact liée :"
+              label="Entreprise liée :"
             >
-          <b-form-select v-model="selected" :options="options" size="sm" class="mt-1"></b-form-select>-->
-          <!-- </b-form-group> -->
-           <!-- </div> -->
+              <b-form-select v-model="contacts.entreprises_identreprises">
+                <option
+                  v-for="(entreprise, index) in (entreprises)"
+                  :value="entreprise.identreprises"
+                  :key="index"
+                  size="sm"
+                  class="mt-1"
+                >{{entreprise.entname}}</option>
+              </b-form-select>
+              <span>Selectionné: {{entreprises_identreprises}}</span>
+            </b-form-group>
+          </div>
         </div>
         <button type="submit" class="btn btn-primary" @click="postContact()">Valider</button>
       </form>
     </b-card>
+    <p v-if="errors.length" class="ml-2">
+      <b style="color :red">Veuillez corriger les erreurs suivantes :</b>
+    </p>
+    <ul>
+      <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+    </ul>
   </div>
 </template>
 
@@ -129,61 +144,115 @@ import axios from "axios";
 export default {
   name: "UpdateContact",
   props: {
-    id: String,
-    },
-    
+    id: String
+  },
+
   data() {
     return {
-        contacts:[],
-        ctsurname: '',
-        ctname: '',
-        ctadress: '',
-        ctzip: '',
-        ctcity: '',
-        ctemail: '',
-        entsiret: '',
-        entstatut: '',
-        contacts_id_contact:''
-        
+      contacts: [],
+      entreprises: [],
+      errors: [],
+      ctsurname: "",
+      ctname: "",
+      ctadress: "",
+      ctzip: "",
+      ctcity: "",
+      ctfunction: "",
+      ctemail: "",
+      ctphone: "",
+      entreprises_identreprises: ""
     };
   },
 
   methods: {
-
-    getOneContact: function() {
-        axios.get(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`).then((response) => {
-        this.contacts = response.data[0];});
-        },
-
-    postContact(){
-            let currentObj = this;
-
-      axios.put(`https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`,{
-        ctsurname: this.contacts.ctsurname,
-        ctname: this.contacts.ctname,
-        ctadress: this.contacts.ctadress,
-        ctzip: this.contacts.ctzip,
-        ctcity: this.contacts.ctcity,
-        ctemail: this.contacts.ctemail,
-        ctfunction: this.contacts.ctfunction,
-        ctphone: this.contacts.ctphone,
-        entreprises_identreprises: this.contacts.entreprises_identreprises,
-     
-      }).then(function (response){
-        alert('Contact modifiée !');
-        currentObj.$router.push('/listeContacts');
-      }).catch(function(error){
-        alert(error);
-      });
+    checkForm: function() {
+      this.errors = [];
+      if (this.ctsurname === "") {
+        this.errors.push("Nom requis");
+      }
+      if (this.ctname === "") {
+        this.errors.push("Prénom requis");
+      }
+      if (this.ctadress === "") {
+        this.errors.push("Adresse requise");
+      }
+      if (this.ctzip === "") {
+        this.errors.push("Code Postal requis");
+      }
+      if (this.ctcity === "") {
+        this.errors.push("Ville requise");
+      }
+      if (this.ctemail === "") {
+        this.errors.push("Email requis");
+      }
+      if (this.ctfunction === "") {
+        this.errors.push("Fonction requise");
+      }
+      if (this.ctphone === "") {
+        this.errors.push("N° de téléphone requis");
+      }
+      if (this.entreprises_identreprises === "") {
+        this.errors.push("Veuillez choisir l'entreprise affiliée à ce contact");
+      }
+      if (this.errors.length) {
+        this.postContact();
+      }
     },
+    getOneContact: function() {
+      axios
+        .get(
+          `https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`
+        )
+        .then(response => {
+          this.contacts = response.data[0];
+        });
+    },
+
+    postContact() {
+      let currentObj = this;
+
+      axios
+        .put(
+          `https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/contacts/${this.id}`,
+          {
+            ctsurname: this.contacts.ctsurname,
+            ctname: this.contacts.ctname,
+            ctadress: this.contacts.ctadress,
+            ctzip: this.contacts.ctzip,
+            ctcity: this.contacts.ctcity,
+            ctemail: this.contacts.ctemail,
+            ctfunction: this.contacts.ctfunction,
+            ctphone: this.contacts.ctphone,
+            entreprises_identreprises: this.contacts.entreprises_identreprises
+          }
+        )
+        .then(function(response) {
+          alert("Contact modifiée !");
+          currentObj.$router.push("/listeContacts");
+        })
+        .catch(function(error) {
+          alert(error);
+        });
+    },
+    getEntreprise: function() {
+      axios
+        .get(
+          "https://app-91c920ca-654f-4549-a6f5-c58b7d4c0c06.cleverapps.io/v1/entreprises"
+        )
+        .then(response => {
+          this.entreprises = response.data;
+        });
+    }
   },
-    created () {
-        this.getOneContact();
-                },
-        watch: {
-            $route: function() {
-            this.getOneContact();
-                                }
-            }, 
+  created() {
+    this.getOneContact();
+    this.getEntreprise();
+  },
+  watch: {
+    $route: function() {
+      this.getOneContact();
+      this.getEntreprise();
+    }
+  }
 };
 </script>

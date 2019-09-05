@@ -4,39 +4,37 @@
       <table class="table table-striped table-bordered" style="width:100%">
           <thead width="40rem">
               <tr>
-                  <th scope="col">Suppression,<br> modification</th>
-                  <th scope="col">#</th>
-                  <th scope="col" >Nom</th>
-                  <th scope="col" >Prénom</th>
-                  <th scope="col">Adresse</th>
-                  <th scope="col">Code postal</th>
-                  <th scope="col">Ville</th>
-                  <th scope="col" >Email</th>
-                  <th scope="col">Téléphone</th>
-                  <th scope="col">Fonction</th>
-                  <th scope="col">Entreprise</th>
+                  <th class="align-middle" scope="col">Suppression,<br> modification</th>
+                  <th class="align-middle" scope="col">#</th>
+                  <th class="align-middle" scope="col" >Nom</th>
+                  <th class="align-middle" scope="col" >Prénom</th>
+                  <th class="align-middle" scope="col">Adresse</th>
+                  <th class="align-middle" scope="col">Code postal</th>
+                  <th class="align-middle" scope="col">Ville</th>
+                  <th class="align-middle" scope="col" >Email</th>
+                  <th class="align-middle" scope="col">Téléphone</th>
+                  <th class="align-middle" scope="col">Fonction</th>
+                  <th class="align-middle" scope="col">Entreprise</th>
               </tr>
           </thead>
           <tbody>
               <tr v-for="(contact) in (contacts)" :key="contact.id_contact">
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="deleteContact(contact.id_contact)">🗑</button>
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" @click="$router.push({name: 'UpdateContact' ,params: {id: `${contact.id_contact}`}})">🖍</button>
-                <td>{{contact.id_contact}}</td>
-                <td>{{contact.ctsurname}}</td>
-                <td>{{contact.ctname}}</td>
-                <td>{{contact.ctadress}}</td>
-                <td>{{contact.ctzip}}</td>
-                <td>{{contact.ctcity}}</td>
-                <td>{{contact.ctemail}}</td>
-                <td>{{contact.ctphone}}</td>
-                <td>{{contact.ctfunction}}</td>
-                <td>{{contact.entreprises_identreprises}}</td>
+                <td class="align-middle"><button type="button" class="btn btn-light pull-right" data-toggle="modal" @click="deleteContact(contact.id_contact)">🗑</button>
+                    <button type="button" class="btn btn-light pull-right" data-toggle="modal" @click="$router.push({name: 'UpdateContact' ,params: {id: `${contact.id_contact}`}})">🖍</button></td>
+                <td class="align-middle">{{contact.id_contact}}</td>
+                <td class="align-middle">{{contact.ctsurname}}</td>
+                <td class="align-middle">{{contact.ctname}}</td>
+                <td class="align-middle">{{contact.ctadress}}</td>
+                <td class="align-middle">{{contact.ctzip}}</td>
+                <td class="align-middle">{{contact.ctcity}}</td>
+                <td class="align-middle">{{contact.ctemail}}</td>
+                <td class="align-middle">{{contact.ctphone}}</td>
+                <td class="align-middle">{{contact.ctfunction}}</td>
+                <td class="align-middle">{{contact.entname}}</td>
               </tr>
           </tbody>
       </table>
     </div>
- <!-- <button @click="prevPage" class="float-left btn btn-outline-info btn-sm"><i class="fas fa-arrow-left"></i> Previous</button> 
- <button @click="nextPage" class="float-right btn btn-outline-info btn-sm">Next <i class="fas fa-arrow-right"></i></button> -->
   </div>
 </template>
 <script>
@@ -83,7 +81,7 @@
 
 </script>
 <style>
-.btn-danger{
+.btn-light{
 margin-top: 0.25rem;
  background:rgb(247, 247, 247);
  border-color:#ffffff;
@@ -95,7 +93,7 @@ margin-top: 0.25rem;
   overflow: hidden;
   line-height: 32px;
    }
-.btn-danger:after{
+.btn-light:after{
    content: '';
   position: absolute;
   top: -50%;
@@ -105,7 +103,7 @@ margin-top: 0.25rem;
   background: linear-gradient(to bottom, rgba(229, 172, 142, 0), rgba(255,255,255,0.5) 50%, rgba(229, 172, 142, 0));
   transform: rotateZ(60deg) translate(-5em, 7.5em);
    }
-   .btn-danger:hover::after, .btn-danger:focus::after {
+   .btn-light:hover::after, .btn-light:focus::after {
   animation: sheen 1s forwards;
 }
 @keyframes sheen {
