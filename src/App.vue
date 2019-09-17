@@ -3,17 +3,20 @@
     <header>
       <span>
         Gestion de contact Trecobat
-        <button v-if="this.$route.path != '/addEntreprise' && this.$route.path != '/'"
+        <button
+          v-if="this.$route.path != '/addEntreprise' && this.$route.path != '/'"
           @click="$router.push({name: 'addEntreprise'})"
           class="btn btn-outline-light"
           role="button"
-        > Ajouter une entreprise</button>
-        <button v-if="this.$route.path != '/addContact' && this.$route.path != '/'"
+        >Ajouter une entreprise</button>
+        <button
+          v-if="this.$route.path != '/addContact' && this.$route.path != '/'"
           @click="$router.push({name: 'editionContact'})"
           class="btn btn-outline-light"
           role="button"
-        > Ajouter un contact</button>
-        <button v-if="this.$route.path != '/'"
+        >Ajouter un contact</button>
+        <button
+          v-if="this.$route.path != '/'"
           @click="$router.push({name: 'Accueil'})"
           class="btn btn-outline-light"
           role="button"
@@ -48,10 +51,8 @@ export default {
 <style lang="scss">
 @import "./assets/custom.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-
 </style>
 <style>
-
 body {
   margin: 0;
 }

@@ -30,11 +30,7 @@
                 id="adresse"
                 label="Adresse* :"
               >
-                <validation-provider
-                  name="adresse"
-                  :rules="{ required: true, alpha_spaces: true }"
-                  v-slot="{ errors }"
-                >
+                <validation-provider name="adresse" :rules="{ required: true}" v-slot="{ errors }">
                   <b-form-input id="adresse" v-model="entadress" placeholder="Obligatoire"></b-form-input>
                   <span>{{ errors[0] }}</span>
                 </validation-provider>

@@ -3,20 +3,23 @@
     <h1>{{ msg }}</h1>
     <button
       class="btn btn-info btn-lg btn-block"
-      role="button" @click="$router.push({name: 'liste_entreprise'})"
+      role="button"
+      @click="$router.push({name: 'liste_entreprise'})"
     >Liste des entreprises</button>
     <button
       class="btn btn-success btn-lg btn-block"
-      role="button" @click="$router.push({name: 'contacts'})"
+      role="button"
+      @click="$router.push({name: 'contacts'})"
     >Liste des contacts</button>
     <button
       class="btn btn-primary btn-lg btn-block"
-      role="button" @click="$router.push({name: 'addEntreprise'})"
+      role="button"
+      @click="$router.push({name: 'addEntreprise'})"
     >Créer une entreprise</button>
     <button
-      
       class="btn btn-secondary btn-lg btn-block"
-      role="button" @click="$router.push({name: 'editionContact'})"
+      role="button"
+      @click="$router.push({name: 'editionContact'})"
     >Créer un contact</button>
   </div>
 </template>
@@ -52,11 +55,11 @@ li {
 a {
   color: #35495e;
 }
-.btn-success{
-  background-color:#de5a34;
-  border-color:#de5a34;
-  }
-  .btn-success:hover{
-    background-color:#bd421f;
-  }
+.btn-success {
+  background-color: #de5a34;
+  border-color: #de5a34;
+}
+.btn-success:hover {
+  background-color: #bd421f;
+}
 </style>
